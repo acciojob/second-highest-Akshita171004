@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html>
 
 <head>
@@ -9,8 +8,24 @@
 <body>	
 	<script>
 		function secondHighest(arr) {
-			//Write your code here
-			
+			// Convert string elements to numbers
+			arr = arr.map(Number);
+
+			let max = -Infinity;
+			let secondMax = -Infinity;
+
+			for (let num of arr) {
+				if (num > max) {
+					secondMax = max;
+					max = num;
+				} else if (num > secondMax && num < max) {
+					secondMax = num;
+				}
+			}
+
+			// Check if secondMax is still -Infinity (means no second unique max)
+			if (secondMax === -Infinity) return -Infinity;
+			return secondMax;
 		}
 
 		function Main() {
@@ -25,8 +40,7 @@
 	</script>
 
     <script type="text/javascript" src="./script.js">
-</script>
-
+    </script>
 </body>
 
 </html>
